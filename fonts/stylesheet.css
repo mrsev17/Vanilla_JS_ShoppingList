@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Inconsolata';
+    src: local('Inconsolata Medium'), local('Inconsolata-Medium'),
+        url('Inconsolata-Medium.woff2') format('woff2'),
+        url('Inconsolata-Medium.woff') format('woff'),
+        url('Inconsolata-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: local('Inconsolata Bold'), local('Inconsolata-Bold'),
+        url('Inconsolata-Bold.woff2') format('woff2'),
+        url('Inconsolata-Bold.woff') format('woff'),
+        url('Inconsolata-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: local('Inconsolata Regular'), local('Inconsolata-Regular'),
+        url('Inconsolata-Regular.woff2') format('woff2'),
+        url('Inconsolata-Regular.woff') format('woff'),
+        url('Inconsolata-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
