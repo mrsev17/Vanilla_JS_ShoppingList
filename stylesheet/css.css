@@ -35,7 +35,12 @@ body {
     text-rendering: optimizeSpeed;
     line-height: 1.5;
     font-family: "Inconsolata", sans-serif;
+    /*
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(140,29,204,1) 46%, rgba(0,212,255,1) 100%);
+
+    /*
+    background: linear-gradient(135deg, rgba(2,0,36,1) 0%, rgba(185,39,78,1) 32%, rgba(0,212,255,1) 100%);
+     */
 }
 
 ul[class],
@@ -53,7 +58,7 @@ img {
 }
 
 article > * + * {
-    margin-top: 1em;
+    margin-top: 0.4em;
 }
 
 input,
@@ -146,8 +151,6 @@ select {
     --transition: all 0.3s linear;
     --spacing: 0.25rem;
     --radius: 0.5rem;
-    --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     --max-width: 1170px;
     --fixed-width: 620px;
 }
@@ -179,8 +182,7 @@ select {
 .section-center {
     width: 90vw;
     margin: 0 auto;
-    max-width: 35rem;
-    margin-top: 8rem;
+    max-width: 40rem;
 }
 .center-title {
     text-align: center;
@@ -189,7 +191,7 @@ select {
 }
 @media screen and (min-width: 992px) {
     .section-center {
-        width: 95vw;
+        width: 100%;
     }
 }
 main {
@@ -203,14 +205,14 @@ Grocery List
 ===============
 */
 .section-center {
-    background-image: linear-gradient(135deg,#00b4db 10%,#fff 10%,#fff 90%,#0083b0 90%);
+    background-image: linear-gradient(135deg,#00b4db 12%,#fff 12%,#fff 88%,#00b4db 88%);
     border-radius: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s linear;
     padding: 2rem;
 }
 .section-center:hover {
-    box-shadow: var(--dark-shadow);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 .alert {
     margin-bottom: 1rem;
@@ -255,7 +257,7 @@ Grocery List
     outline: none;
 }
 #grocery::placeholder {
-    font-family: var(--ff-secondary);
+    font-family: "Inconsolata", sans-serif;
     color: var(--clr-grey-5);
 }
 .submit-btn {
@@ -345,8 +347,31 @@ Grocery List
     letter-spacing: var(--spacing);
     cursor: pointer;
     transition: var(--transition);
-    margin-top: 1.25rem;
+    margin-top: 1.50rem;
 }
 .clear-btn:hover {
     color: var(--clr-red-dark);
 }
+
+
+.lightMode .app {
+    padding: 20px 15px;
+    max-width: 1000px;
+    max-height: 2500px;
+    margin: 0 auto;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(185,39,78,1) 0%, rgba(0,212,255,1) 100%);
+}
+
+.darkMode .app {
+    padding: 20px 15px;
+    max-width: 1000px;
+    max-height: 2500px;
+    margin: 0 auto;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(185,39,78,1) 100%, rgba(0,212,255,1) 100%);
+}
+.mode {
+    padding: 16px 30px;
+    font-size: 18px;
+}
+
+
