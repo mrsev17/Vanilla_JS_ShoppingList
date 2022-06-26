@@ -65,7 +65,11 @@ function addItem(e) {
             // Set back to default
             setBackToDefault();
     } else if (value && editFlag) {
-        console.log("editing");
+        editElement.innerHTML = value;
+        displayAlert("value changed", "succes");
+        // Edit local storage
+        editLocalStorage(editID, value);
+        setBackToDefault()
     } else {
         displayAlert("please enter value", "danger");
     }
@@ -81,6 +85,7 @@ function displayAlert(text, action) {
         alert.classList.remove(`alert-${action}`);
     },1000)
 }
+
 // Clear items
 
 function clearItems() {
@@ -93,29 +98,67 @@ function clearItems() {
     container.classList.remove("show-container");
     displayAlert("empty list", "danger");
     setBackToDefault();
+
     // localStorage.removeItem("list");
 }
 // Delete function
 
-function deleteItem() {
-    console.log("item deleted");
+function deleteItem(e) {
+    const element = e.currentTarget.parentElement.parentElement;
+    const id = element.dataset.id;
+    list.removeChild(element);
+    if(list.children.length === 0) {
+        container.classList.remove("show-container");
+    }
+    displayAlert("item removed", "danger");
+    setBackToDefault();
+
+    // remove from local storage
+    // removeFromLocalStorage(id);
 }
 
 // Edit item
 
-function editItem() {
-    console.log("item edited");
+function editItem(e) {
+    const element = e.currentTarget.parentElement.parentElement;
+
+    // set edit item
+
+    editElement = e.currentTarget.parentElement.previousElementSibling;
+
+    // Set form value
+
+    grocery.value = editElement.innerHTML;
+    editFlag = true;
+    editID = element.dataset.id;
+    submitBtn.textContent = "edit";
 }
 
 // Set back to default
+
 function setBackToDefault() {
     grocery.value = "";
     editFlag = false;
     editID = "";
     submitBtn.textContent = "submit";
 }
+
 // ** LOCAL STORAGE **
+
 function addToLocalStorage(id,value) {
-    console.log("added to local storage");
+
+    // console.log("added to local storage");
 }
+function removeFromLocalStorage (id) {}
+function editLocalStorage(id, value) {}
+
+// Local Storage API
+// Set Item
+// Get Item
+// remove Item
+// Save as strings
+// localStorage.setItem("orange", JSON.stringify(["item", "item2"]));
+// const oranges = JSON.parse(localStorage.getItem("orange"));
+// console.log(oranges);
+// localStorage.removeItem("orange");
 // *** Setup Items ***
