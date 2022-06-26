@@ -16,11 +16,31 @@ let editFlag = false;
 let editID = "";
 
 // *** EVENT LISTENERS ***
+// submit form
 
+form.addEventListener("submit", addItem);
 
 
 // *** Functions ***
-
+function addItem(e) {
+    e.preventDefault();
+    const value = grocery.value;
+    const id = new Date().getTime().toString();
+    if (value && !editFlag) {
+        console.log("add item to the list");
+    }
+    else if (value && editFlag) {
+        console.log("editing");
+    }
+    else {
+        displayAlert("please enter value", "danger");
+    }
+}
+// Display alert
+function displayAlert(text,action) {
+    alert.textContent = text;
+    alert.classList.add('alert-${action}');
+}
 // ** LOCAL STORAGE **
 
 // *** Setup Items ***
