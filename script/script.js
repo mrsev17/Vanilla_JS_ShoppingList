@@ -233,6 +233,8 @@ function changeMode(event) {
         // Toggle .darkMode and .lightMode on body.all
         all.classList.toggle('darkMode');
         all.classList.toggle('lightMode');
+        all.classList.toggle('dark-mode');
+        all.classList.toggle('dark-mode-title');
     }
     return false;
 }

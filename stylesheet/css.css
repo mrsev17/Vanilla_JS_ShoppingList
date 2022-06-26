@@ -185,6 +185,13 @@ select {
     max-width: 40rem;
 }
 .center-title {
+    color: black;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+.dark-mode .center-title {
+    color: white;
     text-align: center;
     margin-bottom: 30px;
     font-size: 24px;
@@ -211,6 +218,14 @@ Grocery List
     transition: all 0.3s linear;
     padding: 2rem;
 }
+.dark-mode .section-center {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(244,58,108,1) 100%, rgba(0,212,255,1) 100%);
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s linear;
+    padding: 2rem;
+}
+
 .section-center:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
@@ -370,8 +385,10 @@ Grocery List
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(185,39,78,1) 100%, rgba(0,212,255,1) 100%);
 }
 .mode {
-    padding: 16px 30px;
+    padding: 14px 40px;
     font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 150px;
 }
 
 
