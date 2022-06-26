@@ -219,8 +219,13 @@ Grocery List
     padding: 2rem;
 }
 .dark-mode .section-center {
+    /*
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(244,58,108,1) 100%, rgba(0,212,255,1) 100%);
+
+     */
+    background-image: linear-gradient(135deg,black 12%,rgba(185,39,78,1) 12%,rgba(185,39,78,1) 88%,black 88%);
     border-radius: 20px;
+
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s linear;
     padding: 2rem;
@@ -289,7 +294,24 @@ Grocery List
     cursor: pointer;
     content: var(--clr-primary-5);
     transition: var(--transition);
-    font-size: 0.85rem;
+    font-size: 1rem;
+}
+.submit-btn-dark .submit-btn {
+    background: black;
+    color: white;
+    border-color: transparent;
+    flex: 0 0 5rem;
+    display: grid;
+    align-items: center;
+    padding: 0.25rem;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    border-top-right-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    cursor: pointer;
+    content: var(--clr-primary-5);
+    transition: var(--transition);
+    font-size: 1rem;
 }
 .submit-btn:hover {
     background: var(--clr-primary-5);
@@ -324,6 +346,12 @@ Grocery List
 .title {
     margin-bottom: 0;
     color: #0083b0;
+    letter-spacing: 2px;
+    transition: var(--transition);
+}
+.title-dark .title {
+    margin-bottom: 0;
+    color: black;
     letter-spacing: 2px;
     transition: var(--transition);
 }
@@ -388,7 +416,7 @@ Grocery List
     padding: 14px 40px;
     font-size: 18px;
     font-weight: 800;
-    margin-bottom: 150px;
+    margin-bottom: 50px;
 }
 
 

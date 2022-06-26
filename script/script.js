@@ -190,7 +190,7 @@ function createListItem(id,value) {
     const attr = document.createAttribute("data-id");
     attr.value = id;
     element.setAttributeNode(attr);
-    element.innerHTML = `<p class="title">${value}</p>
+    element.innerHTML = `<p class="title title-dark">${value}</p>
             <div class="btn-container">
               <button type="button" class="edit-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -215,6 +215,7 @@ function createListItem(id,value) {
     list.appendChild(element);
 }
 
+// Script for change color mode
 
 // Pass Event Object
 function changeMode(event) {
@@ -235,6 +236,8 @@ function changeMode(event) {
         all.classList.toggle('lightMode');
         all.classList.toggle('dark-mode');
         all.classList.toggle('dark-mode-title');
+        all.classList.toggle('title-dark');
+        all.classList.toggle('submit-btn-dark');
     }
     return false;
 }
