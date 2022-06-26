@@ -20,6 +20,8 @@ let editID = "";
 form.addEventListener("submit", addItem);
 // Clear items
 clearBtn.addEventListener("click", clearItems);
+// Load items
+window.addEventListener("DOMContentLoaded", setupItems);
 
 
 // *** Functions ***
@@ -28,6 +30,8 @@ function addItem(e) {
     const value = grocery.value;
     const id = new Date().getTime().toString();
     if (value && !editFlag) {
+        createListItem(id, value)
+        /*
         const element = document.createElement("article");
         // add class
         element.classList.add("grocery-item");
@@ -56,6 +60,7 @@ function addItem(e) {
             editBtn.addEventListener("click", editItem);
             // append child
             list.appendChild(element);
+            */
             // display alert
             displayAlert("item added to the list", "success");
             // show container
@@ -99,7 +104,7 @@ function clearItems() {
     displayAlert("empty list", "danger");
     setBackToDefault();
 
-    // localStorage.removeItem("list");
+    localStorage.removeItem("list");
 }
 // Delete function
 
@@ -146,12 +151,35 @@ function setBackToDefault() {
 // ** LOCAL STORAGE **
 
 function addToLocalStorage(id,value) {
-
+    const grocery = { id, value };
+    let items = getLocalStorage();
+    items.push(grocery);
+    localStorage.setItem("list", JSON.stringify(items));
     // console.log("added to local storage");
 }
-function removeFromLocalStorage (id) {}
-function editLocalStorage(id, value) {}
+function removeFromLocalStorage (id) {
+    let items = getLocalStorage();
 
+    items = items.filter(function(item) {
+        if (item, id !== id) {
+            return item
+        }
+    });
+    localStorage.setItem("list", JSON.stringify(items));
+}
+function editLocalStorage(id, value) {
+    let items = getLocalStorage();
+    items = items.map(function (item) {
+        if (item.id === id) {
+            item.value = value;
+        }
+        return item;
+    })
+}
+function getLocalStorage() {
+    return localStorage.getItem("list")
+    ? JSON.parse(localStorage.getItem("list")):[];
+}
 // Local Storage API
 // Set Item
 // Get Item
@@ -162,3 +190,44 @@ function editLocalStorage(id, value) {}
 // console.log(oranges);
 // localStorage.removeItem("orange");
 // *** Setup Items ***
+
+function setupItems() {
+    let items = getLocalStorage();
+    if (items.length > 0) {
+        items.forEach(function(item){
+            createListItem(item.id, item.value)
+        })
+        container.classList.add("show-container")
+    }
+}
+
+function createListItem(id,value) {
+    const element = document.createElement("article");
+    // add class
+    element.classList.add("grocery-item");
+    // add id
+    const attr = document.createAttribute("data-id");
+    attr.value = id;
+    element.setAttributeNode(attr);
+    element.innerHTML = `<p class="title">${value}</p>
+            <div class="btn-container">
+              <button type="button" class="edit-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                </svg>
+              </button>
+              <button type="button" class="delete-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                </svg>
+              </button>
+            </div>`;
+    const deleteBtn = element.querySelector(".delete-btn");
+    const editBtn = element.querySelector(".edit-btn");
+    deleteBtn.addEventListener("click", deleteItem);
+    editBtn.addEventListener("click", editItem);
+    // append child
+    list.appendChild(element);
+}
