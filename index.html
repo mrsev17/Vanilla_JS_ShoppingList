@@ -6,14 +6,14 @@
     <title>Shopping List</title>
 
     <!-- styles -->
-
+    <link rel="stylesheet" href="stylesheet/animate.css" type="text/css"/>
     <link rel="stylesheet" href="stylesheet/css.css" type="text/css"/>
 
   </head>
   <body class="all lightMode">
 
   <main class="app container">
-    <section class="section-center dark-mode-title">
+    <section class="section-center dark-mode-title wow slideInDown">
 
       <!-- form -->
 
@@ -41,7 +41,7 @@
     </section>
     <section class="switcher">
 
-      <div class="switcher__button">
+      <div class="switcher__button wow slideInDown">
 
         <button class="mode btn btn-outline-dark far fa-sun" type="button">Mode</button>
 
@@ -50,8 +50,11 @@
     </section>
   </main>
     <!-- javascript -->
-
-    <script src="script/script.js"></script>
+     <script src="script/wow.min.js"></script>
+         <script>
+             new WOW().init();
+         </script>
+     <script src="script/script.js"></script>
 
   </body>
 </html>
